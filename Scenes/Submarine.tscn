@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://6hq52pneaw1c"]
+
+[ext_resource type="Script" uid="uid://cmwl0esvt0tsm" path="res://Scripts/Submarine_Camera.gd" id="1_i1j3c"]
+[ext_resource type="Shader" uid="uid://dyciwnacpvops" path="res://Shaders/CRT.gdshader" id="2_6irpn"]
+[ext_resource type="Shader" uid="uid://qu2e1n8h07v0" path="res://Shaders/Submarine_Radar.gdshader" id="3_mgm4y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
+shader = ExtResource("2_6irpn")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_g4v7s"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yf5fn"]
+render_priority = 0
+shader = ExtResource("3_mgm4y")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g4v7s"]
+material = SubResource("ShaderMaterial_yf5fn")
+size = Vector2(0.8, 0.8)
+
+[node name="Submarine" type="Node3D" unique_id=341237702]
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1904101148]
+script = ExtResource("1_i1j3c")
+
+[node name="Screen" type="CanvasLayer" parent="." unique_id=369077814]
+
+[node name="Control" type="Control" parent="Screen" unique_id=1605524952]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Button" parent="Screen/Control" unique_id=1231595293]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 100.0
+grow_vertical = 2
+text = "III"
+
+[node name="Right" type="Button" parent="Screen/Control" unique_id=1244887570]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -100.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "III"
+
+[node name="ColorRect" type="ColorRect" parent="Screen/Control" unique_id=928410960]
+material = SubResource("ShaderMaterial_g4v7s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+mouse_behavior_recursive = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=484957797]
+transform = Transform3D(1, 0, 0, 0, 0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 0, -0.9, -1.5)
+mesh = SubResource("BoxMesh_g4v7s")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=8248126]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, -0.45, -1.2)
+mesh = SubResource("PlaneMesh_g4v7s")
+
+[connection signal="pressed" from="Screen/Control/Left" to="Camera" method="_on_left_pressed"]
+[connection signal="pressed" from="Screen/Control/Right" to="Camera" method="_on_right_pressed"]
