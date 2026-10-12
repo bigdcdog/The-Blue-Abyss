@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1rsdas0r61k6"]
+
+[ext_resource type="Script" uid="uid://dl36p8lc3nrbr" path="res://Scenes/fish_school.gd" id="1_twvwo"]
+
+[node name="Fish" type="Node3D" unique_id=1867426317]
+script = ExtResource("1_twvwo")

@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]
 
-Global="*uid://8g1v6w1mkjo6"
+global="*uid://8g1v6w1mkjo6"
 
 [display]
 

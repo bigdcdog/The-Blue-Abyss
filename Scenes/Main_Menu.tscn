@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://musxf7diyxh2"]
 
-[ext_resource type="Script" uid="uid://boax1gbdt1r4j" path="res://Scripts/Main_Menu.gd" id="1_rmbjf"]
-[ext_resource type="Shader" uid="uid://dyciwnacpvops" path="res://Shaders/CRT.gdshader" id="2_b7rmo"]
+[ext_resource type="Script" uid="uid://boax1gbdt1r4j" path="res://Scripts/main_menu.gd" id="1_48xlc"]
+[ext_resource type="Shader" uid="uid://dyciwnacpvops" path="res://Shaders/CRT.gdshader" id="2_1ehe0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g4v7s"]
-shader = ExtResource("2_b7rmo")
+shader = ExtResource("2_1ehe0")
 shader_parameter/resolution = Vector2(320, 180)
 shader_parameter/scan_line_amount = 1.0
 shader_parameter/warp_amount = 0.1
@@ -21,12 +21,13 @@ shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
 [node name="Main Menu" type="Node2D" unique_id=1251504615]
-script = ExtResource("1_rmbjf")
+script = ExtResource("1_48xlc")
 
 [node name="Screen" type="CanvasLayer" parent="." unique_id=1286314961]
 
 [node name="Button Manager" type="Control" parent="Screen" unique_id=407785124]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
