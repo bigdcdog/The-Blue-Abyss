@@ -1,6 +1,15 @@
 [gd_scene format=3 uid="uid://b1rsdas0r61k6"]
 
 [ext_resource type="Script" uid="uid://dl36p8lc3nrbr" path="res://Scenes/fish_school.gd" id="1_twvwo"]
+[ext_resource type="Script" uid="uid://d2bf14xkwecme" path="res://Scripts/fish.gd" id="2_c4ibo"]
+
+[sub_resource type="Resource" id="Resource_twvwo"]
+script = ExtResource("2_c4ibo")
+base_time = 5.0
+base_damage = 10.0
+hull_attack_chance = 50.0
+metadata/_custom_type_script = "uid://d2bf14xkwecme"
 
 [node name="Fish" type="Node3D" unique_id=1867426317]
 script = ExtResource("1_twvwo")
+fish = SubResource("Resource_twvwo")
